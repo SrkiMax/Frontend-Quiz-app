@@ -1,0 +1,799 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    //border: 2px solid black;
+}
+
+/*Colors*/
+
+:root {
+
+    /*Colors*/
+    --Grey-500: #626C7f;
+    --Grey-50: #F4F6FA;
+    --Blue-950: #2D3949;
+    --Blue-900: #313E51;
+    --Blue-850: #3B4D66;
+    --Blue-500: #306AFF;
+    --Blue-300: #ABC1E1;
+    --Blue-100: #EDF1F9;
+    --Blue-50: #EBF0FF;
+    --Green-500: #2FD887;
+    --Green-100: #E0FDEF;
+    --Purple-600: #A729F5;
+    --Purple-100: #F6E7FF;
+    --Orange-400: #FF7E35;
+    --Orange-50: #FFF5ED;
+    --Red-500: #EE5454;
+
+}
+
+
+.text-preset-1-medium {
+    font-weight: 500;
+    font-size: 144px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+
+.text-preset-1-mobile-medium {
+    font-weight: 500;
+    font-size: 88px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+
+.text-preset-2-medium {
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+
+.text-preset-2-light {
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+
+.text-preset-2-mobile-medium {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+
+.text-preset-2-mobile-light {
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+
+.text-preset-3-medium {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+
+.text-preset-3-mobile {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+
+.text-preset-4-medium {
+
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
+
+.text-preset-4-mobile {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+
+.text-preset-5-medium {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: 0px;
+}
+
+.text-preset-5-regular {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: 0px;
+}
+
+.text-preset-5-mobile {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0px;
+}
+
+.text-preset-6 {
+    font-style: italic;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: 0px;
+}
+
+
+
+
+
+body {
+    background-color: var(--Blue-50);
+    color: var(--Blue-900);
+    padding: 3rem 6rem 6rem 6rem;
+    font-family: "Rubik", sans-serif;
+}
+
+body.dark-mode {
+    background-color: var(--Blue-950);
+    color: white;
+}
+
+body.dark-mode .card {
+    background-color: var(--Blue-950);
+    color: white;
+}
+
+
+
+body.dark-mode .scorecard,
+body.dark-mode .option {
+    background-color: var(--Blue-850);
+    color: white;
+}
+
+body.dark-mode .option p {
+    color: white;
+}
+
+body.dark-mode .pick-text,
+body.dark-mode .left-upper-card2 p:first-of-type,
+body.dark-mode .text-under-number {
+    color: var(--Blue-300);
+}
+
+body.dark-mode .slider {
+    background-color: var(--Blue-850);
+    border: 4px solid var(--Blue-850);
+}
+
+
+
+.container {
+    height: 100vh;
+    max-width: 1157px;
+
+}
+
+header {
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    //display: none;
+}
+
+.header-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background-color: var(--Purple-100);
+}
+
+.header-text p {
+    margin: 0;
+    line-height: 56px;
+    font-size: 28px;
+}
+
+.toggle-section {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    right: 0;
+
+}
+
+.toggle-sun-div,
+.toggle-moon-div {
+    width: 24px;
+    height: 24px;
+
+}
+
+
+
+/*Toggle button customizing*/
+.toggle-button {
+    margin-top: 5px;
+    background-color: var(--Red-500);
+
+    width: 48px;
+    height: 28px;
+    border-radius: 1rem;
+    cursor: pointer;
+    position: relative;
+
+
+}
+
+.toggle-button::before {
+    position: absolute;
+    content: '';
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 4px;
+    transition: 0.2s;
+}
+
+input:checked+.toggle-button {
+    background-color: var(--Purple-600);
+
+}
+
+input:checked+.toggle-button::before {
+    transform: translate(20px, 0px);
+
+}
+
+#check {
+    display: none;
+}
+
+
+
+.card1 {
+    display: flex;
+    flex-direction: row;
+    gap: 0.7rem;
+    background-color: var(--Blue-50);
+    color: var(--Blue-900);
+    border: none;
+    display: none;
+
+}
+
+
+
+
+.left-upper {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-between;
+
+}
+
+.pick-text {
+    color: var(--Grey-500);
+}
+
+.left {
+    width: 50%;
+    display: flex;
+
+
+}
+
+.right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    gap: 16px;
+}
+
+.option {
+
+    background-color: white;
+    padding: 24px;
+    border-radius: 24px;
+
+
+    height: 104px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 32px;
+
+}
+
+.img-div {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+
+
+}
+
+.img-html {
+    background-color: var(--Orange-50);
+}
+
+.img-css {
+    background-color: var(--Green-100);
+}
+
+.img-js {
+    background-color: var(--Blue-50);
+}
+
+.img-accessibility {
+    background-color: var(--Purple-100);
+}
+
+img {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-self: center;
+    align-items: flex-end;
+
+}
+
+.option-text {
+    margin-top: auto;
+    margin-bottom: auto;
+    color: var(--Blue-900);
+}
+
+
+
+
+
+/*Card 2 customization*/
+
+.card2 {
+    display: flex;
+    flex-direction: row;
+    gap: 0.7rem;
+
+    background-color: var(--Blue-50);
+    color: var(--Blue-900);
+    border: none;
+    //display: none;
+}
+
+
+
+.left-card2 {
+    width: 50%;
+    padding-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.left-upper-card2 {
+    width: 100%;
+}
+
+.question {}
+
+.slider-div {
+    margin-bottom: 117px;
+}
+
+/* Slider Style */
+.slider {
+    -webkit-appearance: none;
+    /* Removes default styling */
+    width: 100%;
+    height: 16px;
+    background-color: white;
+    //background-color: var(--Blue-850);
+    /* Default background color */
+    border: 4px solid white;
+    //border: 4px solid var(--Blue-850);
+    border-radius: 20px;
+
+    transition: background 0.3s ease;
+
+}
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Removes default thumb styling */
+    background: var(--Orange-400);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+
+.img-A,
+.img-B,
+.img-C,
+.img-D {
+    background-color: var(--Grey-50);
+}
+
+.img-div span {
+    height: 100%;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    color: var(--Grey-500);
+}
+
+.submit-button {
+    background-color: var(--Purple-600);
+    color: white;
+    margin-top: 16px;
+    border: none;
+    padding: 32px;
+    border-radius: 24px;
+    width: 100%;
+    height: 92px;
+}
+
+.submit-button:disabled {
+    background-color: var(--Purple-600);
+    opacity: 50%;
+}
+
+.error-message-div {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.error-message {
+    color: var(--Red-500);
+    margin-top: 15px;
+}
+
+
+
+
+
+
+
+
+/*Scorecard page*/
+
+.scorecard-page {
+    display: flex;
+    flex-direction: row;
+    gap: 0.7rem;
+    background-color: var(--Blue-50);
+    color: var(--Blue-900);
+    border: none;
+    display: none;
+}
+
+.scorecard {
+    width: 100%;
+    height: 388px;
+    background-color: white;
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scorecard-header {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.score-number {
+    margin-bottom: 16px;
+}
+
+.text-under-number {
+    color: var(--Grey-500);
+}
+
+
+
+/*Media queries*/
+@media (max-width: 992px) {
+
+
+    body {
+        padding: 2rem 3rem 3rem 3rem;
+    }
+
+    header {
+        margin-bottom: 3rem;
+    }
+
+    .card1 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        //display: none;
+    }
+
+    .card2 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        //display: none;
+    }
+
+    .left-upper {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        justify-content: space-between;
+    }
+
+    .left-upper-card2 {}
+
+    .question {
+        width: 100%;
+    }
+
+    .slider-div {
+        margin-top: 40px;
+        margin-bottom: -22px;
+    }
+
+    .pick-text {
+        margin-bottom: 0;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .left-card2 {
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .right {
+        width: 100%;
+        margin-top: 44px;
+        gap: 24px;
+    }
+
+    .option {
+        padding: 16px;
+        height: 88px;
+    }
+
+
+
+    /*Scorecard page*/
+
+    .quiz-completed-div {
+        margin-bottom: -15px;
+    }
+
+    .scorecard-page {
+        flex-direction: column;
+        //display: none;
+    }
+
+    .text-under-number {
+        font-weight: 500;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    body {
+        padding: 24px;
+    }
+
+    header {
+        height: 40px;
+        margin-bottom: 32px;
+    }
+
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        //display: none;
+    }
+
+    .header-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-text p {
+        font-size: 18px;
+        //line-height: 120%;
+    }
+
+    .toggle-section {
+        gap: 8px;
+    }
+
+    .toggle-sun-div,
+    .toggle-moon-div {
+        width: 16px;
+        height: 16px;
+    }
+
+
+
+    /*Toggle button customizing*/
+    .toggle-button {
+        width: 32px;
+        height: 20px;
+    }
+
+    .toggle-button::before {
+        height: 12px;
+        width: 12px;
+        margin: 4px;
+        transition: 0.2s;
+    }
+
+
+    input:checked+.toggle-button::before {
+        transform: translate(12px, 0px);
+    }
+
+
+    .card1 {
+        padding-top: 32px;
+        //display: none;
+    }
+
+    .card2 {
+        //display: none;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .welcome {
+        font-weight: 300;
+        font-size: 40px;
+    }
+
+    .frontend-quiz {
+        font-weight: 500;
+        font-size: 40px;
+    }
+
+
+    .left-upper {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        justify-content: space-between;
+    }
+
+    .pick-text {
+        font-size: 14px;
+    }
+
+    .left {
+        width: 100%;
+        display: flex;
+    }
+
+    .right {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .option {
+        padding: 16px;
+        border-radius: 12px;
+        height: 72px;
+        gap: 16px;
+    }
+
+    .img-div {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+    }
+
+
+    img {
+        width: 28.57px;
+        height: 100%;
+    }
+
+    .option-letter {
+        font-size: 18px;
+        line-height: 120%;
+    }
+
+    .option-text {
+        font-size: 18px;
+        line-height: 120%;
+    }
+
+    .submit-button {
+        font-size: 18px;
+        line-height: 120%;
+        margin-top: 0px;
+        padding: 16px;
+        border-radius: 12px;
+        height: 56px;
+    }
+
+    .error-message-div img {
+        height: 32px;
+        width: 32px;
+    }
+
+    .error-message {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 120%;
+    }
+
+    /*Scorecard page*/
+
+    .scorecard-page {
+        //display: none;
+    }
+
+    .scorecard {
+        height: 242px;
+        border-radius: 12px;
+        padding: 32px;
+    }
+
+    .scorecard-header {
+        height: 40px;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .score-number {
+        font-size: 88px;
+    }
+
+    .text-under-number {
+        font-size: 18px;
+        line-height: 120%;
+    }
+
+
+}
