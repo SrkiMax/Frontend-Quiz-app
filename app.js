@@ -3,14 +3,14 @@ const toggleCheckbox = document.querySelector("#check");
 const body = document.body;
 
 const headerLeft = document.querySelector(".header-left");
-const headerImg = document.querySelector(".header-img img");
-const headerText = document.querySelector(".header-text p");
+const headerColorBox = document.querySelectorAll(".header-img");
+const headerImg = document.querySelectorAll(".header-img img");
+const headerText = document.querySelectorAll(".header-text p");
 
 
 const sunImg = document.querySelector(".toggle-sun-div img");
 const moonImg = document.querySelector(".toggle-moon-div img")
 const slider = document.querySelector(".slider");
-const sliderDigit = document.querySelector(".char-length-digit");
 
 const homePage = document.querySelector(".card1");
 const questionsCard = document.querySelector(".card2");
@@ -19,7 +19,7 @@ const scorecard = document.querySelector(".scorecard-page");
 
 const questionElement = document.querySelector(".question");
 const optionElements = document.querySelectorAll(".option");
-const lettersBackground = document.querySelector(".img-div");
+
 
 
 const submitBtn = document.querySelector(".submit-button");
@@ -151,9 +151,8 @@ submitBtn.addEventListener("click", () => {
                 opt.style.pointerEvents = "none";
             });
 
-            // You can now update your button text to say "Next" or handle next question
+
             submitBtn.textContent = "Next Question";
-            //When showing a new question, also reset this:
 
             errorMessageDiv.classList.remove("show-error");
 
@@ -175,6 +174,7 @@ submitBtn.addEventListener("click", () => {
             // QUIZ COMPLETED — Show scorecard
             questionsCard.classList.remove("active");
             scorecard.classList.add("active");
+
 
             const scoreNumberEl = document.querySelector(".score-number");
             scoreNumberEl.textContent = score;
@@ -305,8 +305,28 @@ quizButtons.forEach((quizbtn, index) => {
         //This will dynamically show a different image and title in the header based on the quiz selected
         const headerImageSource = `starter-code/${selectedQuiz.icon.slice(2)}`;
         console.log("Header image source is now: ", headerImageSource);
-        headerImg.src = headerImageSource;
-        headerText.textContent = selectedQuiz.title;
+        headerImg.forEach((image) => {
+            image.src = headerImageSource;
+        })
+        headerText.forEach((text) => {
+            text.textContent = selectedQuiz.title;
+        })
+
+        const title = selectedQuiz.title;
+        headerColorBox.forEach((box) => {
+            if (title === "HTML") {
+                box.style.backgroundColor = "#FFF5ED";
+            } else if (title === "CSS") {
+                box.style.backgroundColor = "#E0FDEF";
+            } else if (title === "JavaScript") {
+                box.style.backgroundColor = "#EBF0FF";
+            } else if (title === "Accessibility") {
+                box.style.backgroundColor = "#F6E7FF";
+            }
+        })
+
+
+
 
 
         questionsCard.classList.add("active");
@@ -319,6 +339,11 @@ quizButtons.forEach((quizbtn, index) => {
 
     });
 });
+
+
+
+
+
 
 
 /*make the button change color/opacity when hovered over it */
