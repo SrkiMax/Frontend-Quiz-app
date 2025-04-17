@@ -136,7 +136,7 @@
 body {
     background-color: var(--Blue-50);
     color: var(--Blue-900);
-    padding: 3rem 6rem 6rem 6rem;
+    padding: 3rem 2rem 6rem 2rem;
     font-family: "Rubik", sans-serif;
 }
 
@@ -153,12 +153,14 @@ body.dark-mode .card {
 
 
 body.dark-mode .scorecard,
-body.dark-mode .option {
+body.dark-mode .option,
+body.dark-mode .element {
     background-color: var(--Blue-850);
     color: white;
 }
 
-body.dark-mode .option p {
+body.dark-mode .option p,
+body.dark-mode .element p {
     color: white;
 }
 
@@ -195,7 +197,7 @@ header {
     display: flex;
     align-items: center;
     gap: 24px;
-    //display: none;
+    display: none;
 }
 
 .header-img {
@@ -278,7 +280,7 @@ input:checked+.toggle-button::before {
     background-color: var(--Blue-50);
     color: var(--Blue-900);
     border: none;
-    display: none;
+    //display: none;
 
 }
 
@@ -313,27 +315,60 @@ input:checked+.toggle-button::before {
     gap: 16px;
 }
 
-.option {
+.option,
+.element {
 
     background-color: white;
     padding: 24px;
     border-radius: 24px;
-
-
     height: 104px;
     display: flex;
     justify-content: start;
     align-items: center;
     gap: 32px;
-
 }
+
+.option {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option:hover,
+.element:hover {
+    cursor: pointer;
+}
+
+.option.clicked {
+    border: 2px solid var(--Purple-600);
+}
+
+/* Change this line of code to style the img-div to purple  */
+.img-div.clicked {
+    background-color: var(--Purple-600);
+}
+
+.option.correct {
+    border: 2px solid var(--Green-500);
+}
+
+.option.incorrect {
+    border: 2px solid var(--Red-500);
+}
+
 
 .img-div {
     width: 56px;
     height: 56px;
     border-radius: 8px;
 
+}
 
+.img-div.correct {
+    background-color: var(--Green-500);
+}
+
+.img-div.incorrect {
+    background-color: var(--Red-500);
 }
 
 .img-html {
@@ -361,10 +396,23 @@ img {
 
 }
 
-.option-text {
+.letter-and-text {
+    display: flex;
+}
+
+.checkmark {
+    display: none;
+}
+
+.option-text,
+.element-text {
     margin-top: auto;
     margin-bottom: auto;
     color: var(--Blue-900);
+}
+
+.option-text {
+    margin-left: 32px;
 }
 
 
@@ -381,7 +429,7 @@ img {
     background-color: var(--Blue-50);
     color: var(--Blue-900);
     border: none;
-    //display: none;
+    display: none;
 }
 
 
@@ -426,13 +474,15 @@ img {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     /* Removes default thumb styling */
-    background: var(--Orange-400);
+
+    //background: var(--Orange-400);
     width: 28px;
     height: 28px;
     border-radius: 50%;
     border: none;
     cursor: pointer;
 }
+
 
 
 .img-A,
@@ -450,7 +500,8 @@ img {
     color: var(--Grey-500);
 }
 
-.submit-button {
+.submit-button,
+.play-again-button {
     background-color: var(--Purple-600);
     color: white;
     margin-top: 16px;
@@ -461,7 +512,16 @@ img {
     height: 92px;
 }
 
-.submit-button:disabled {
+.submit-button:hover,
+.play-again-button:hover {
+    background-color: var(--Purple-600);
+    opacity: 50%;
+}
+
+
+
+.submit-button:disabled,
+.play-again-button:disabled {
     background-color: var(--Purple-600);
     opacity: 50%;
 }
@@ -472,6 +532,11 @@ img {
     justify-content: center;
     align-items: center;
     gap: 8px;
+    display: none;
+}
+
+.error-message-div.show-error {
+    display: flex;
 }
 
 .error-message {
@@ -526,8 +591,21 @@ img {
 
 
 
+.card1.active,
+.card2.active,
+.scorecard-page.active {
+    display: flex;
+}
+
+.card1.not-active,
+.card2.not-active,
+.scorecard-page.not-active {
+    display: none;
+}
+
+
 /*Media queries*/
-@media (max-width: 992px) {
+@media (max-width: 1045px) {
 
 
     body {
@@ -542,14 +620,16 @@ img {
         display: flex;
         flex-direction: column;
         gap: 0.7rem;
-        //display: none;
+
+
     }
 
     .card2 {
         display: flex;
         flex-direction: column;
         gap: 0.7rem;
-        //display: none;
+        display: none;
+
     }
 
     .left-upper {
@@ -589,10 +669,13 @@ img {
         gap: 24px;
     }
 
-    .option {
+    .option,
+    .element {
         padding: 16px;
         height: 88px;
     }
+
+
 
 
 
@@ -604,7 +687,7 @@ img {
 
     .scorecard-page {
         flex-direction: column;
-        //display: none;
+
     }
 
     .text-under-number {
@@ -614,10 +697,11 @@ img {
 }
 
 
-@media (max-width: 576px) {
+@media (max-width: 586px) {
 
     body {
         padding: 24px;
+
     }
 
     header {
@@ -629,7 +713,7 @@ img {
         display: flex;
         align-items: center;
         gap: 16px;
-        //display: none;
+        display: none;
     }
 
     .header-img {
@@ -675,12 +759,10 @@ img {
 
     .card1 {
         padding-top: 32px;
-        //display: none;
+
     }
 
-    .card2 {
-        //display: none;
-    }
+    .card2 {}
 
     .question {
         font-size: 20px;
@@ -718,7 +800,8 @@ img {
         gap: 16px;
     }
 
-    .option {
+    .option,
+    .element {
         padding: 16px;
         border-radius: 12px;
         height: 72px;
@@ -742,12 +825,18 @@ img {
         line-height: 120%;
     }
 
-    .option-text {
+    .option-text,
+    .element-text {
         font-size: 18px;
         line-height: 120%;
     }
 
-    .submit-button {
+    .option-text {
+        margin-left: 16px;
+    }
+
+    .submit-button,
+    .play-again-button {
         font-size: 18px;
         line-height: 120%;
         margin-top: 0px;
@@ -769,9 +858,7 @@ img {
 
     /*Scorecard page*/
 
-    .scorecard-page {
-        //display: none;
-    }
+    .scorecard-page {}
 
     .scorecard {
         height: 242px;
