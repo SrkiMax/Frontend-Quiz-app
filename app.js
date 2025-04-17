@@ -256,6 +256,8 @@ playAgainBtn.addEventListener("click", () => {
 
     // Reset submit button text
     submitBtn.textContent = "Submit Answer";
+
+    resetOptions();
 })
 
 
