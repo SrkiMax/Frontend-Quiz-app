@@ -280,7 +280,7 @@ input:checked+.toggle-button::before {
     background-color: var(--Blue-50);
     color: var(--Blue-900);
     border: none;
-    //display: none;
+
 
 }
 
@@ -358,6 +358,8 @@ input:checked+.toggle-button::before {
 
 .img-div {
     width: 56px;
+    min-width: 56px;
+    max-width: 56px;
     height: 56px;
     border-radius: 8px;
 
@@ -810,6 +812,8 @@ img {
 
     .img-div {
         width: 40px;
+        min-width: 40px;
+        max-width: 40px;
         height: 40px;
         border-radius: 8px;
     }
