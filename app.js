@@ -98,12 +98,9 @@ submitBtn.addEventListener("click", () => {
         // SUBMIT mode
         if (!selectedOption) {
             errorMessageDiv.classList.add("show-error");
-            console.log("No option selected. Showing error.");
 
         } else {
             errorMessageDiv.classList.remove("show-error");
-            console.log("Option selected. Proceeding.");
-
 
             // Get current question and correct answer
             const currentQuestion = selectedQuiz.questions[currentQuestionIndex];
@@ -151,47 +148,44 @@ submitBtn.addEventListener("click", () => {
                 opt.style.pointerEvents = "none";
             });
 
-
             submitBtn.textContent = "Next Question";
-
             errorMessageDiv.classList.remove("show-error");
-
             isSubmitted = true;
         }
     } else {
-        // NEXT QUESTION mode
-        currentQuestionIndex++;
-
-        if (currentQuestionIndex < selectedQuiz.questions.length) {
-            showQuestions();
-            resetOptions();
-            selectedOption = null;
-            submitBtn.textContent = "Submit Answer";
-            isSubmitted = false;
-            slider.value = currentQuestionIndex + 1;
-            updateSlider();
-        } else {
-            // QUIZ COMPLETED — Show scorecard
-            questionsCard.classList.remove("active");
-            scorecard.classList.add("active");
+        handleNextQuestion();
+    }
+});
 
 
-            const scoreNumberEl = document.querySelector(".score-number");
-            scoreNumberEl.textContent = score;
 
-            const outOfText = document.querySelector(".text-under-number");
-            outOfText.textContent = `out of ${selectedQuiz.questions.length}`;
-        }
+const handleNextQuestion = () => {
+    // NEXT QUESTION mode
+    currentQuestionIndex++;
 
-
+    if (currentQuestionIndex < selectedQuiz.questions.length) {
+        showQuestions();
+        resetOptions();
+        selectedOption = null;
+        submitBtn.textContent = "Submit Answer";
+        isSubmitted = false;
+        slider.value = currentQuestionIndex + 1;
+        updateSlider();
+    } else {
+        showScorecard();
 
     }
+}
 
+const showScorecard = () => {
+    // QUIZ COMPLETED — Show scorecard
+    questionsCard.classList.remove("active");
+    scorecard.classList.add("active");
+    //Show the score
+    document.querySelector(".score-number").textContent = score;
 
-
-
-
-});
+    document.querySelector(".text-under-number").textContent = `out of ${selectedQuiz.questions.length}`;
+}
 
 
 // Reset the clicked options
@@ -213,7 +207,6 @@ const resetOptions = () => {
         const icon = option.querySelector("img");
         icon.style.display = "none";
         icon.setAttribute("src", "starter-code/assets/images/icon-correct.svg");
-
 
     });
     selectedOption = null;
@@ -268,9 +261,6 @@ const showQuestions = () => {
 
     console.log("Current Question Data is: ", currentQuestion);
 
-
-
-
     questionElement.textContent = currentQuestion.question;
     questionNumberText.textContent = currentQuestionIndex + 1;
 
@@ -278,18 +268,7 @@ const showQuestions = () => {
         const answerText = currentQuestion.options[index];
 
         optionEl.querySelector(".option-text").textContent = answerText;
-
-
-
-
-
-
-
-
-
-
     });
-
 
 }
 
@@ -325,10 +304,7 @@ quizButtons.forEach((quizbtn, index) => {
             }
         })
 
-
-
-
-
+        //Hide the home page and show the questionCard
         questionsCard.classList.add("active");
         homePage.classList.add("not-active");
 
