@@ -1,4 +1,6 @@
 
+
+
 const toggleCheckbox = document.querySelector("#check");
 const body = document.body;
 
@@ -156,6 +158,13 @@ submitBtn.addEventListener("click", () => {
         handleNextQuestion();
     }
 });
+//Adding a keyboard eventListener
+submitBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        submitBtn.click();
+    }
+});
 
 
 
@@ -177,10 +186,13 @@ const handleNextQuestion = () => {
     }
 }
 
+
 const showScorecard = () => {
     // QUIZ COMPLETED — Show scorecard
     questionsCard.classList.remove("active");
     scorecard.classList.add("active");
+
+
     //Show the score
     document.querySelector(".score-number").textContent = score;
 
@@ -225,6 +237,13 @@ optionElements.forEach((option) => {
         selectedOption = option;
 
     });
+    //Adding a keyboard eventListener
+    option.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            option.click();
+        }
+    });
 
 });
 
@@ -251,6 +270,8 @@ playAgainBtn.addEventListener("click", () => {
     submitBtn.textContent = "Submit Answer";
 
     resetOptions();
+
+
 })
 
 
@@ -272,7 +293,7 @@ const showQuestions = () => {
 
 }
 
-/*Choosing whitch quiz subject the user wants to take*/
+/*Choosing which quiz subject the user wants to take*/
 quizButtons.forEach((quizbtn, index) => {
     quizbtn.addEventListener("click", async () => {
         const data = await fetchLiveData();
@@ -291,6 +312,7 @@ quizButtons.forEach((quizbtn, index) => {
             text.textContent = selectedQuiz.title;
         })
 
+
         const title = selectedQuiz.title;
         headerColorBox.forEach((box) => {
             if (title === "HTML") {
@@ -306,42 +328,22 @@ quizButtons.forEach((quizbtn, index) => {
 
         //Hide the home page and show the questionCard
         questionsCard.classList.add("active");
+        // When the user enters the quiz, focus will loop within .card2.
+
         homePage.classList.add("not-active");
 
         showQuestions();
         slider.value = currentQuestionIndex + 1;
 
-
-
     });
+    //Adding a keyboard eventListener
+    quizbtn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            quizbtn.click();
+        }
+    });
+
 });
 
 
-
-
-
-
-
-/*make the button change color/opacity when hovered over it */
-/*When HTML clicked, or CSS clicked
-- enter that data/array from JSON
--hide homePage, show questionsCard 
--show question for selected category
--show answers for selected category
--initialize the counter for number of questions, set the counter to 0
--initialize the counter for correct answers, set the counter to 0
--show purple border around the clicked option
--check if the submit button was clicked and display error message
--when submit button clicked, do this:
--mark the right answer with green border and a checkmark, and all the wrong answers with red border and x mark
--if selected answer matches the correct answer, 
-  1) show green border around the right answer
-  2) add 1 to the counter of the number of questions
-  3) add 1 to the counter of correct answers
-  4) set the slider's value to the counter
-  5) change the text of the button to Next Question
-  6) when Next Question button has been clicked, show the next question and answers
-  7) change the text of the button back to Submit
-  8) when we finish the last, 10th question, display the scorecard page, and show results
-  9) hide the other pages
-  */
