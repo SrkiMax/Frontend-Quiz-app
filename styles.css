@@ -134,20 +134,31 @@
 
 
 body {
-    background-color: var(--Blue-50);
+    background-image: url("starter-code/assets/images/pattern-background-desktop-light.svg");
+    background-size: cover;
+    background-position: center;
+
+    background-color: var(--Grey-50);
     color: var(--Blue-900);
     padding: 3rem 2rem 6rem 2rem;
     font-family: "Rubik", sans-serif;
+
 }
 
+
+
+
 body.dark-mode {
-    background-color: var(--Blue-950);
+    background-image: url("starter-code/assets/images/pattern-background-desktop-dark.svg");
+    background-size: cover;
+    background-position: center;
+    background-color: var(--Blue-900);
     color: white;
 }
 
 body.dark-mode .card {
-    background-color: var(--Blue-950);
     color: white;
+    background-color: transparent;
 }
 
 
@@ -278,6 +289,9 @@ input:checked+.toggle-button::before {
     flex-direction: row;
     gap: 0.7rem;
     background-color: var(--Blue-50);
+
+    background-color: transparent;
+
     color: var(--Blue-900);
     border: none;
 }
@@ -323,6 +337,7 @@ input:checked+.toggle-button::before {
     justify-content: start;
     align-items: center;
     gap: 32px;
+
 }
 
 .option {
@@ -339,7 +354,16 @@ input:checked+.toggle-button::before {
     border: 2px solid var(--Purple-600);
 }
 
-/* Change this line of code to style the img-div to purple  */
+
+.element:focus,
+.option:focus,
+.submit-button:focus {
+    border: 2px solid var(--Purple-600);
+    //outline: 2px solid var(--Purple-600);
+
+}
+
+
 .img-div.clicked {
     background-color: var(--Purple-600);
 }
@@ -408,6 +432,7 @@ img {
     margin-top: auto;
     margin-bottom: auto;
     color: var(--Blue-900);
+    font-size: 24px;
 }
 
 .option-text {
@@ -424,8 +449,7 @@ img {
     display: flex;
     flex-direction: row;
     gap: 0.7rem;
-
-    background-color: var(--Blue-50);
+    background-color: transparent;
     color: var(--Blue-900);
     border: none;
     display: none;
@@ -555,7 +579,7 @@ img {
     display: flex;
     flex-direction: row;
     gap: 0.7rem;
-    background-color: var(--Blue-50);
+    background-color: transparent;
     color: var(--Blue-900);
     border: none;
     display: none;
@@ -608,6 +632,11 @@ img {
 
     body {
         padding: 2rem 3rem 3rem 3rem;
+        background-image: url("starter-code/assets/images/pattern-background-tablet-light.svg");
+    }
+
+    body.dark-mode {
+        background-image: url("starter-code/assets/images/pattern-background-tablet-dark.svg");
     }
 
     header {
@@ -699,6 +728,16 @@ img {
 
     body {
         padding: 24px;
+        background-image: url("starter-code/assets/images/pattern-background-mobile-light.svg");
+        background-size: cover;
+
+    }
+
+
+
+    body.dark-mode {
+        background-image: url("starter-code/assets/images/pattern-background-mobile-dark.svg");
+
 
     }
 
@@ -827,12 +866,12 @@ img {
 
     .option-text,
     .element-text {
-        font-size: 18px;
+        font-size: 14px;
         line-height: 120%;
     }
 
     .option-text {
-        margin-left: 16px;
+        margin-left: 15px;
     }
 
     .submit-button,
