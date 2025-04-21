@@ -140,7 +140,7 @@ body {
 
     background-color: var(--Grey-50);
     color: var(--Blue-900);
-    padding: 4rem 2rem 6rem 2rem;
+    padding: 5rem 2rem 6rem 2rem;
     font-family: "Rubik", sans-serif;
 
 }
@@ -199,7 +199,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     position: relative;
 
 }
